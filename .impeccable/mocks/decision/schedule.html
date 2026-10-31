@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;width:1440px;height:900px;overflow:hidden;background:#0f0f0d;color:#efe9dc;font-family:Inter,sans-serif;font-weight:300}
+h2{margin:0;position:absolute;left:56px;top:64px;font:300 72px/1 'Cormorant Garamond',serif}
+.sub{position:absolute;left:58px;top:160px;font:italic 400 22px 'Cormorant Garamond';color:rgba(239,233,220,.7)}
+.grid{position:absolute;left:56px;right:56px;top:240px;bottom:150px}
+.ruler{position:absolute;left:420px;right:0;top:0;height:30px;border-bottom:1px solid rgba(239,233,220,.2)}
+.ruler span{position:absolute;top:0;font:400 11px Inter;letter-spacing:.2em;color:rgba(239,233,220,.5)}
+.row{position:absolute;left:0;right:0;height:62px;border-bottom:1px solid rgba(239,233,220,.1);display:flex;align-items:center}
+.row .name{width:420px;display:flex;align-items:center;gap:20px;font:300 26px 'Cormorant Garamond',serif}
+.box{width:16px;height:16px;border:1px solid rgba(239,233,220,.45)}
+.on .box{background:#c9ab70;border-color:#c9ab70}
+.off .name{color:rgba(239,233,220,.5)}
+.bar{position:absolute;height:6px;background:#c9ab70}
+.off .bar{background:none;border:1px dashed rgba(239,233,220,.25);height:4px}
+.fin{position:absolute;top:-10px;bottom:-10px;width:1px;background:#c9ab70}
+.fin span{position:absolute;left:14px;top:-4px;white-space:nowrap;font:italic 400 30px 'Cormorant Garamond';color:#c9ab70}
+.foot{position:absolute;left:56px;right:56px;bottom:56px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(239,233,220,.12);padding-top:28px}
+.foot p{margin:0;font:italic 400 20px 'Cormorant Garamond';color:rgba(239,233,220,.7)}
+.btn{border:1px solid #c9ab70;color:#c9ab70;padding:18px 40px;font:400 11px Inter;letter-spacing:.28em;text-transform:uppercase}
+</style></head><body>
+<h2>Ne kadar sürer?</h2>
+<p class="sub">Hizmetleri seçin; takvim kendini çizsin.</p>
+<div class="grid">
+  <div class="ruler"><span style="left:0">1. HF</span><span style="left:20%">2</span><span style="left:40%">4</span><span style="left:60%">6</span><span style="left:80%">8</span></div>
+  <div class="row on" style="top:40px"><div class="name"><span class="box"></span>Temel site ve altyapı</div><div class="bar" style="left:420px;width:300px"></div></div>
+  <div class="row on" style="top:102px"><div class="name"><span class="box"></span>Online ödeme</div><div class="bar" style="left:720px;width:140px"></div></div>
+  <div class="row on" style="top:164px"><div class="name"><span class="box"></span>WhatsApp ve e-posta</div><div class="bar" style="left:860px;width:110px"></div></div>
+  <div class="row off" style="top:226px"><div class="name"><span class="box"></span>Çok dilli içerik</div><div class="bar" style="left:970px;width:150px"></div></div>
+  <div class="row on" style="top:288px"><div class="name"><span class="box"></span>Operasyon paneli</div><div class="bar" style="left:970px;width:130px"></div></div>
+  <div class="row off" style="top:350px"><div class="name"><span class="box"></span>+ Bir fikir ekleyin</div></div>
+  <div class="fin" style="left:1100px"><span>~ 6–9 hafta</span></div>
+</div>
+<div class="foot"><p>Bedel, ihtiyaçlarınızı dinlediğimiz bir görüşmeden sonra belirlenir.</p><span class="btn">Planı e-postayla gönder</span></div>
+</body></html>

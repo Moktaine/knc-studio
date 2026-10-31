@@ -1,0 +1,59 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-30T18:02:56.582Z",
+        "reason": "Claude: rendered screenshots show h1 ~96px/6rem and section titles ~88px vs 16px body; sizes are clamp() in src/style.css, which static index.html analysis cannot resolve"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-10-30T23:58:04.701Z",
+        "reason": "Brief pin: user's original brief specifies 'one light sans (e.g. Inter Light)'; recorded in PRODUCT.md as pinned type"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "garamond\",serif",
+        "files": [
+          ".impeccable/mocks/decision/letter.html"
+        ],
+        "createdAt": "2026-10-31T00:32:43.772Z",
+        "reason": "Claude: decision-round sketch (exempt mock), and Cormorant Garamond is the DESIGN.md serif; value is a parse fragment of the font-family string"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "garamond\",serif",
+        "files": [
+          ".impeccable/mocks/decision/drawings.html"
+        ],
+        "createdAt": "2026-10-31T00:32:43.839Z",
+        "reason": "Claude: decision-round sketch (exempt mock), and Cormorant Garamond is the DESIGN.md serif; value is a parse fragment of the font-family string"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "garamond\",serif",
+        "files": [
+          ".impeccable/mocks/decision/schedule.html"
+        ],
+        "createdAt": "2026-10-31T00:32:43.903Z",
+        "reason": "Claude: decision-round sketch (exempt mock), and Cormorant Garamond is the DESIGN.md serif; value is a parse fragment of the font-family string"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "garamond\",serif",
+        "files": [
+          ".impeccable/mocks/decision/workbench.html"
+        ],
+        "createdAt": "2026-10-31T00:32:43.969Z",
+        "reason": "Claude: decision-round sketch (exempt mock), and Cormorant Garamond is the DESIGN.md serif; value is a parse fragment of the font-family string"
+      }
+    ]
+  }
+}

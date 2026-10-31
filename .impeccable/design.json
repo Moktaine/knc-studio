@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T00:00:00Z",
+  "title": "Design System: KNC Studio",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Lamp-Black Ink", "canonical": "#0f0f0d", "tonalRamp": ["#0f0f0d", "#1f1e1b", "#35332e", "#4e4b45", "#6b6760", "#8d8981", "#b5b1a8", "#e6e2d9"] },
+      "warm": { "role": "neutral", "displayName": "Umber Board", "canonical": "#1a1713", "tonalRamp": ["#120f0c", "#1a1713", "#2b2620", "#433b31", "#5f5446", "#847562", "#b0a08b", "#ddd2c2"] },
+      "cream": { "role": "neutral", "displayName": "Vellum Cream", "canonical": "#efe9dc", "tonalRamp": ["#3a362d", "#57514a", "#7a7368", "#9d968a", "#bfb8ab", "#d8d1c3", "#efe9dc", "#f8f5ee"] },
+      "gold": { "role": "primary", "displayName": "Muted Gilt", "canonical": "#c9ab70", "tonalRamp": ["#3b301c", "#594928", "#7a6539", "#9f844f", "#c9ab70", "#d8c093", "#e6d5b5", "#f3ead9"] },
+      "cream-70": { "role": "neutral", "displayName": "Cream 70 (secondary text)", "canonical": "rgb(239 233 220 / 0.7)" },
+      "cream-55": { "role": "neutral", "displayName": "Cream 55 (labels, ticks, placeholders)", "canonical": "rgb(239 233 220 / 0.55)" },
+      "cream-30": { "role": "neutral", "displayName": "Cream 30 (dashed not-yet strokes, underlines)", "canonical": "rgb(239 233 220 / 0.3)" },
+      "cream-12": { "role": "neutral", "displayName": "Cream 12 (hairline dividers)", "canonical": "rgb(239 233 220 / 0.12)" },
+      "gold-45": { "role": "primary", "displayName": "Gold 45 (soft gold lines)", "canonical": "rgb(201 171 112 / 0.45)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (outlined)", "purpose": "First half of a headline pair: Inter 300 drawn as a 1px cream stroke, transparent fill." },
+      "display-italic": { "displayName": "Display italic (filled)", "purpose": "Second half of the pair: Cormorant italic 400 filled gold." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Service row names, ledger terms, FAQ questions, step names." },
+      "accent": { "displayName": "Accent italic", "purpose": "Finish label, estimated total, instructions, group headings, closing notes." },
+      "body": { "displayName": "Body", "purpose": "Default text, Inter 300." },
+      "body-long": { "displayName": "Body long", "purpose": "Answers and descriptions in cream-70, capped at 60-62ch." },
+      "label": { "displayName": "Label", "purpose": "Nav links, ruler ticks, day counts, field labels, meta, captions; uppercase, tracked." },
+      "button": { "displayName": "Button", "purpose": "Primary button text; uppercase, tracked 0.28em." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-heavy", "value": "cubic-bezier(0.65, 0, 0.35, 1)", "purpose": "Movement: schedule bars, finish flag, button fill wipe, send bar, FAQ plus rotation (0.9-1.1s)." },
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Hover colour changes, dock fade, menu and FAQ entrances (0.6-0.9s)." },
+      { "name": "scroll-scrub", "value": "GSAP ScrollTrigger timeline with Lenis smooth scroll; power1/power2 inOut eases", "purpose": "Pinned hero and project ring choreography: clip-path wipes, opacity cross-fades, 3D transforms." },
+      { "name": "reduced-motion", "value": "html.reduced", "purpose": "prefers-reduced-motion: no pin, no ring (horizontal snap gallery instead), wire layers hidden, gold layers shown, transitions at 0.01ms." }
+    ],
+    "breakpoints": [
+      { "name": "desktop", "value": "860px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Outlined gold action; a gold fill wipes in from the left on hover and focus.",
+      "html": "<button class=\"ds-btn\">Planı e-postayla gönder</button>",
+      "css": ".ds-btn { position: relative; overflow: hidden; isolation: isolate; padding: 19px 40px; border: 1px solid var(--gold, #c9ab70); border-radius: 0; background: none; color: var(--gold, #c9ab70); font: 400 0.75rem/1 'Inter', system-ui, sans-serif; letter-spacing: 0.28em; text-transform: uppercase; cursor: pointer; transition: color 0.9s cubic-bezier(0.65, 0, 0.35, 1); } .ds-btn::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--gold, #c9ab70); transform: scaleX(0); transform-origin: left; transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1); } .ds-btn:hover, .ds-btn:focus-visible { color: var(--ink, #0f0f0d); } .ds-btn:hover::before, .ds-btn:focus-visible::before { transform: scaleX(1); } .ds-btn:focus-visible { outline: 1px solid var(--gold, #c9ab70); outline-offset: 6px; }"
+    },
+    {
+      "name": "Text Button",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Secondary action: underlined tracked label that turns gold.",
+      "html": "<button class=\"ds-btn-text\">Planı kopyala</button>",
+      "css": ".ds-btn-text { padding: 10px 0; border: 0; background: none; color: rgb(239 233 220 / 0.7); font: 400 0.6875rem/1.4 'Inter', system-ui, sans-serif; letter-spacing: 0.26em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 6px; text-decoration-color: rgb(239 233 220 / 0.3); cursor: pointer; transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-text:hover { color: #c9ab70; } .ds-btn-text:focus-visible { outline: 1px solid #c9ab70; outline-offset: 6px; }"
+    },
+    {
+      "name": "Underline Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Label above, underline only; gold on focus, dashed gold when invalid.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Adınız</span><input class=\"ds-field__input\" type=\"text\" /></label>",
+      "css": ".ds-field { display: block; } .ds-field__label { display: block; margin-bottom: 4px; font: 400 0.6875rem/1.4 'Inter', system-ui, sans-serif; letter-spacing: 0.26em; text-transform: uppercase; color: rgb(239 233 220 / 0.55); } .ds-field__input { display: block; width: 100%; padding: 14px 0; border: 0; border-bottom: 1px solid rgb(239 233 220 / 0.3); border-radius: 0; background: none; color: #efe9dc; font: 300 1.1875rem/1.6 'Inter', system-ui, sans-serif; caret-color: #c9ab70; transition: border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1); } .ds-field__input:focus { outline: none; border-bottom-color: #c9ab70; } .ds-field__input[aria-invalid='true'] { border-bottom: 1px dashed #c9ab70; }"
+    },
+    {
+      "name": "Docked Header",
+      "kind": "nav",
+      "refersTo": "dock",
+      "description": "Fixed ink bar with tracked wordmark and label links; current section in gold.",
+      "html": "<header class=\"ds-dock\"><a class=\"ds-dock__mark\" href=\"#\">KNC Studio</a><nav class=\"ds-dock__links\"><a href=\"#\">İşler</a><a href=\"#\" aria-current=\"true\">Hizmetler</a><a href=\"#\">Süreç</a><a href=\"#\">İletişim</a></nav></header>",
+      "css": ".ds-dock { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 clamp(20px, 4vw, 56px); background: #0f0f0d; border-bottom: 1px solid rgb(239 233 220 / 0.12); color: #efe9dc; } .ds-dock__mark { font: 400 0.8125rem/1 'Inter', system-ui, sans-serif; letter-spacing: 0.36em; color: #efe9dc; text-decoration: none; } .ds-dock__links { display: flex; gap: 36px; } .ds-dock__links a { font: 400 0.6875rem/1.4 'Inter', system-ui, sans-serif; letter-spacing: 0.26em; text-transform: uppercase; color: #efe9dc; text-decoration: none; transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1); } .ds-dock__links a:hover, .ds-dock__links a[aria-current] { color: #c9ab70; } .ds-dock__links a:focus-visible { outline: 1px solid #c9ab70; outline-offset: 6px; }"
+    },
+    {
+      "name": "Plan Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Square gold-45 outline for a chosen service; dashed gold for a visitor's own idea.",
+      "html": "<ul class=\"ds-chips\"><li class=\"ds-chip\">Temel kurulum</li><li class=\"ds-chip ds-chip--idea\">Randevu takvimi</li></ul>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; } .ds-chip { padding: 8px 14px; border: 1px solid rgb(201 171 112 / 0.45); color: #efe9dc; font: 300 0.875rem/1.3 'Inter', system-ui, sans-serif; } .ds-chip--idea { border-style: dashed; color: #c9ab70; }"
+    },
+    {
+      "name": "Schedule Row",
+      "kind": "custom",
+      "refersTo": "planner-row",
+      "description": "Signature planner row: checkbox, serif name, day range, and a gold bar (chosen) or dashed ghost (not yet) on the week track.",
+      "html": "<div class=\"ds-row\"><label class=\"ds-row__pick\"><span class=\"ds-row__box\"></span><span class=\"ds-row__name\">Çok dilli site</span><span class=\"ds-row__days\">9–16 gün</span></label><div class=\"ds-row__track\"><span class=\"ds-row__ghost\"></span></div></div><div class=\"ds-row is-on\"><label class=\"ds-row__pick\"><span class=\"ds-row__box\"></span><span class=\"ds-row__name\">Teslim ve eğitim</span><span class=\"ds-row__days\">5 gün</span></label><div class=\"ds-row__track\"><span class=\"ds-row__bar\"></span></div></div>",
+      "css": ".ds-row { display: grid; grid-template-columns: 42% 1fr; column-gap: 48px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgb(239 233 220 / 0.12); } .ds-row__pick { display: flex; align-items: baseline; gap: 16px; cursor: pointer; } .ds-row__box { flex: none; width: 14px; height: 14px; border: 1px solid rgb(239 233 220 / 0.55); transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1); } .ds-row__name { font: 300 1.75rem/1.15 'Cormorant Garamond', 'Times New Roman', serif; color: rgb(239 233 220 / 0.7); transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1); } .ds-row__pick:hover .ds-row__name, .ds-row.is-on .ds-row__name { color: #efe9dc; } .ds-row__days { margin-left: auto; white-space: nowrap; font: 400 0.6875rem/1 'Inter', system-ui, sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: rgb(239 233 220 / 0.55); font-variant-numeric: tabular-nums; } .ds-row.is-on .ds-row__box { background: #c9ab70; border-color: #c9ab70; } .ds-row.is-on .ds-row__days { color: #c9ab70; } .ds-row__track { position: relative; height: 16px; } .ds-row__bar { position: absolute; left: 50%; width: 12%; top: 5px; height: 6px; background: #c9ab70; transform-origin: left center; transition: transform 1.1s cubic-bezier(0.65, 0, 0.35, 1); } .ds-row__ghost { position: absolute; left: 50%; width: 22%; top: 7px; border-top: 1px dashed rgb(239 233 220 / 0.3); } .ds-row__pick:hover ~ .ds-row__track .ds-row__ghost { border-top-color: #c9ab70; }"
+    },
+    {
+      "name": "FAQ Item",
+      "kind": "custom",
+      "refersTo": "faq-item",
+      "description": "Disclosure row between hairlines; serif question turns gold, SVG plus turns into a cross.",
+      "html": "<details class=\"ds-faq\"><summary>Takvimdeki süreler kesin mi?<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M8 2v12M2 8h12\" /></svg></summary><p>Hayır, yaklaşık. Kesin takvim keşif görüşmesinden sonra netleşir.</p></details>",
+      "css": ".ds-faq { border-top: 1px solid rgb(239 233 220 / 0.12); border-bottom: 1px solid rgb(239 233 220 / 0.12); color: #efe9dc; } .ds-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 0; font: 300 2rem/1.2 'Cormorant Garamond', 'Times New Roman', serif; list-style: none; cursor: pointer; transition: color 0.6s cubic-bezier(0.16, 1, 0.3, 1); } .ds-faq summary::-webkit-details-marker { display: none; } .ds-faq summary:hover, .ds-faq[open] summary { color: #c9ab70; } .ds-faq summary:focus-visible { outline: 1px solid #c9ab70; outline-offset: 6px; } .ds-faq svg { flex: none; width: 16px; fill: none; stroke: currentColor; stroke-width: 1.2; transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1); } .ds-faq[open] svg { transform: rotate(45deg); } .ds-faq p { max-width: 60ch; margin: 0; padding-bottom: 28px; color: rgb(239 233 220 / 0.7); font: 300 1.0625rem/1.75 'Inter', system-ui, sans-serif; }"
+    },
+    {
+      "name": "Headline Pair",
+      "kind": "custom",
+      "refersTo": "headline-pair",
+      "description": "Outlined Inter phrase answered by a filled gold Cormorant italic phrase.",
+      "html": "<h2 class=\"ds-pair\"><span class=\"ds-pair__a\">Bir fikir,</span> <span class=\"ds-pair__b\">çalışan bir ürün.</span></h2>",
+      "css": ".ds-pair { margin: 0; font-size: clamp(2.6rem, 8vw, 6rem); line-height: 1.02; font-weight: 300; } .ds-pair__a { font-family: 'Inter', system-ui, sans-serif; font-weight: 300; letter-spacing: -0.035em; color: transparent; -webkit-text-stroke: 1px #efe9dc; } .ds-pair__b { font: italic 400 1.1em/1.02 'Cormorant Garamond', 'Times New Roman', serif; letter-spacing: -0.01em; color: #c9ab70; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Drawing That Finishes Itself",
+    "overview": "The site opens as a wireframe: dashed boxes for a nav, a dashed frame crossed by dashed diagonals, an outlined sans headline. Scrolling turns the drawing into the built thing, line by line: dashed strokes are wiped away as solid gold strokes sweep in behind them, the gold serif half of the headline fills left to right, and the frame fills with warm brown. That sentence, \"not yet\" becoming \"built\", is the grammar of the whole system, and it is reused everywhere after the hero: the planner's unchosen services preview as dashed ghost bars and chosen ones draw as solid gold bars; an idea row has a dashed box; an invalid field gets a dashed underline; a chip for a free-text idea is dashed.\n\nThe ground is near-black and quiet. Density is low: one message per screen, very large type set light, hairline rules instead of boxes, generous vertical air between sections. Gold is never decoration for its own sake; it means chosen, built, current or actionable. Motion is slow and heavy, scrubbed to scroll in the pinned opening and eased on a heavy in-out curve elsewhere.\n\nThere are no gradients, no shadows, no rounded corners and no filled card grids. Depth comes from the 3D project ring and from the single warm surface tone.",
+    "keyCharacteristics": [
+      "Near-black ground, cream text, one muted gold for state, one warm brown for filled surfaces.",
+      "Dashed hairline = not yet; solid gold = chosen or built.",
+      "Outlined sans phrase answered by a filled gold italic serif phrase.",
+      "Square corners everywhere; the only circle is the timeline dot.",
+      "Hairline rules (1px) organise content; containers are rare.",
+      "Slow, heavy easing; scroll-scrubbed choreography in the pinned opening."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Gold is the only hue. A new state, highlight or call to action is expressed in gold or in a cream tint, never in a new colour.", "section": "colors" },
+      { "name": "The Gold Means Chosen Rule", "body": "Gold marks something selected, built, current or actionable. If an element is none of those, it is cream.", "section": "colors" },
+      { "name": "The Flat Fill Rule", "body": "No gradients anywhere. Surfaces are a single flat tone: ink or warm.", "section": "colors" },
+      { "name": "The Outline Then Fill Rule", "body": "A headline pair is an outlined Inter phrase followed by a filled gold Cormorant italic phrase. The outline is the plan; the gold italic is what was made. Use it for the opening statement of a scene, not for every title.", "section": "typography" },
+      { "name": "The Serif Holds The Number Rule", "body": "Durations, totals and names that a visitor will remember are set in the serif; the sans only labels and explains.", "section": "typography" },
+      { "name": "The No Shadow Rule", "body": "Nothing casts a shadow. Separation is a hairline or a change from ink to warm.", "section": "elevation" },
+      { "name": "The Dashed Means Not Yet Rule", "body": "A dashed stroke marks something unbuilt, unchosen, unsized or unconfirmed. When it becomes real it turns solid, and usually gold. Never dash a finished element for texture.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do express every \"not yet / now chosen\" change as dashed cream-30 becoming solid gold.",
+      "Do pair an outlined Inter 300 phrase with a filled gold Cormorant italic phrase for the opening statement of a scene.",
+      "Do keep corners square and lines at 1px; use the warm tone for the few filled surfaces.",
+      "Do set names, durations and totals in Cormorant Garamond; keep labels at 0.6875rem, uppercase, tracked 0.2em to 0.28em.",
+      "Do choreograph with transform, opacity and clip-path, on the heavy ease (cubic-bezier(0.65, 0, 0.35, 1)) for movement and the soft out-ease (cubic-bezier(0.16, 1, 0.3, 1)) for hover colour, at 0.6s to 1.1s.",
+      "Do give every scroll-driven scene a finished, static reduced-motion state: no pin, no 3D, every wireframe layer hidden and every gold layer shown.",
+      "Do draw icons as thin SVG strokes (1.2) in currentColor or cream-55."
+    ],
+    "donts": [
+      "Don't use gradients, shadows or rounded corners.",
+      "Don't introduce a second accent hue or a brighter gold.",
+      "Don't dash a finished element, or draw a chosen element dashed.",
+      "Don't use bounce, spring or elastic easing, or short snappy durations.",
+      "Don't fill containers with boxed cards; separate content with hairlines."
+    ]
+  }
+}

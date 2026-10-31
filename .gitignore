@@ -1,0 +1,4 @@
+node_modules
+dist
+# local design-review screenshots (large, regenerated on demand)
+.impeccable/review/

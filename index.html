@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f0f0d" />
+    <meta name="description" content="KNC Studio — şirketler için web siteleri ve dijital ürünler tasarlayan ve geliştiren yazılım stüdyosu." />
+    <title>KNC Studio — Bir fikir, çalışan bir ürün.</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230f0f0d'/%3E%3Cpath d='M9 26V15a7 7 0 0 1 14 0v11' fill='none' stroke='%23c9ab70' stroke-width='1.5'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <a class="skip" href="#vaka">İçeriğe geç</a>
+    <!-- docked header: takes over from the hero nav once the hero has finished -->
+    <header class="dock" data-dock>
+      <a class="wordmark" href="#top" lang="en">KNC Studio</a>
+      <nav class="dock__links" aria-label="Sayfa menüsü">
+        <a class="label" href="#isler">İşler</a>
+        <a class="label" href="#hizmetler">Hizmetler</a>
+        <a class="label" href="#surec">Süreç</a>
+        <a class="label" href="#sss">SSS</a>
+        <a class="label" href="#iletisim">İletişim</a>
+      </nav>
+      <button class="dock__toggle label" type="button" aria-expanded="false" aria-controls="dock-menu" data-dock-toggle>Menü</button>
+    </header>
+    <div class="dock-menu" id="dock-menu" data-dock-menu hidden>
+      <nav aria-label="Mobil menü">
+        <a href="#isler">İşler</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#surec">Süreç</a>
+        <a href="#sss">SSS</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+    </div>
+
+    <!-- SCENE 1 + 2 — one pinned stage: hero wireframe → finished hero → curved project wall -->
+    <section class="stage" id="top" aria-label="Giriş ve seçilmiş işler">
+      <div class="hero">
+        <header class="nav">
+          <div class="nav__wire" aria-hidden="true">
+            <span class="wbox wbox--logo"></span>
+            <span class="nav__wire-links">
+              <span class="wbox"></span><span class="wbox"></span><span class="wbox"></span><span class="wbox"></span>
+            </span>
+          </div>
+          <div class="nav__real">
+            <a class="wordmark" href="#top" lang="en">KNC Studio</a>
+            <nav class="nav__links" aria-label="Ana menü">
+              <a class="label" href="#isler">İşler</a>
+              <a class="label" href="#hizmetler">Hizmetler</a>
+              <a class="label" href="#surec">Süreç</a>
+              <a class="label" href="#iletisim">İletişim</a>
+            </nav>
+            <a class="label nav__menu" href="#iletisim">İletişim</a>
+          </div>
+          <span class="rule rule--dash" aria-hidden="true"></span>
+          <span class="rule rule--solid" aria-hidden="true"></span>
+        </header>
+
+        <h1 class="headline">
+          <span class="headline__a">Bir fikir,</span>
+          <span class="headline__b">
+            <span class="headline__ghost" aria-hidden="true">çalışan bir ürün.</span>
+            <span class="headline__fill">çalışan bir ürün.</span>
+          </span>
+        </h1>
+
+        <div class="frame" aria-hidden="true">
+          <div class="frame__fill"></div>
+          <svg class="frame__cross" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <line x1="0" y1="0" x2="100" y2="100" vector-effect="non-scaling-stroke" />
+            <line x1="100" y1="0" x2="0" y2="100" vector-effect="non-scaling-stroke" />
+          </svg>
+          <div class="frame__art" data-hero-art></div>
+          <span class="frame__line frame__line--dash"></span>
+          <span class="frame__line frame__line--solid"></span>
+          <span class="frame__edge frame__edge--t"></span><span class="frame__edge frame__edge--b"></span><span class="frame__edge frame__edge--l"></span><span class="frame__edge frame__edge--r"></span>
+        </div>
+
+        <p class="hint label" aria-hidden="true"><span class="hint__line"></span>Kaydırın</p>
+      </div>
+
+      <div class="wall" id="isler" aria-label="Seçilmiş işler">
+        <div class="ring" data-ring></div>
+        <div class="counter">
+          <p class="label counter__line">
+            <span class="counter__num" data-counter-num lang="en">KNC Studio</span>
+            <span class="counter__sep">—</span> Seçilmiş işler
+          </p>
+          <a class="counter__title" href="#vaka" data-counter-title></a>
+        </div>
+      </div>
+
+      <!-- reduced-motion fallback: plain horizontal gallery -->
+      <div class="gallery" data-gallery hidden></div>
+
+      <!-- the world behind the arch's circle: the ring zooms through it at the end of the pin -->
+      <section class="portal intro" id="yaklasim" aria-labelledby="yaklasim-title" data-portal>
+        <div class="portal__inner">
+          <h2 class="intro__title" id="yaklasim-title">
+            <span class="intro__a">Şablon değil,</span>
+            <span class="intro__b">işinize göre tasarlanmış bir site.</span>
+          </h2>
+          <div class="intro__body">
+            <p>KNC Studio, şirketler için web siteleri ve dijital ürünler tasarlayıp geliştiren bir yazılım stüdyosu.</p>
+            <p>Birbirine benzeyen hazır siteler yapmıyoruz. Önce işinizi, müşterilerinizi ve günlük işleyişinizi öğreniyor, siteyi buna göre sıfırdan tasarlıyoruz. Sonuç yalnızca güzel görünen değil, işinizi gerçekten yürüten bir ürün.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <main>
+      <!-- SCENE 3 — proof, process, plan, brief -->
+      <section class="section case" id="vaka" aria-labelledby="vaka-title">
+        <h2 class="section__title case__title" id="vaka-title">Tur rezervasyon platformu</h2>
+        <p class="label case__meta"><span lang="en">Maxytrip</span> · Turizm · Yayında</p>
+        <p class="case__lead">Bir tur şirketinin rezervasyonunu, ödemesini, otelden alış saatlerini ve yolcu listesini tek bir sisteme topladık. Müşteriye giden her bilgi artık kendiliğinden gidiyor.</p>
+
+        <div class="case__media">
+          <figure class="screen screen--desk">
+            <img src="/work/maxytrip/maxytrip-desktop.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Maxytrip ana sayfası: yaklaşan seferler, canlı kontenjan ve tur arama" />
+          </figure>
+          <figure class="screen screen--phone">
+            <img src="/work/maxytrip/maxytrip-mobile.webp" width="600" height="1300" loading="lazy" decoding="async" alt="Maxytrip ana sayfasının mobil görünümü" />
+          </figure>
+        </div>
+        <div class="case__more">
+          <figure class="shot" style="--zoom:1.7;--x:66%;--y:28%">
+            <div class="shot__frame"><img src="/work/maxytrip/maxytrip-desktop-tours.webp" width="1400" height="868" loading="lazy" decoding="async" alt="Maxytrip tur listesi ve filtreler" /></div>
+            <figcaption class="label">Tur kartları: süre, ulaşım ve kontenjan</figcaption>
+          </figure>
+          <figure class="shot" style="--zoom:1.55;--x:50%;--y:82%">
+            <div class="shot__frame"><img src="/work/maxytrip/maxytrip-desktop-activities.webp" width="1400" height="847" loading="lazy" decoding="async" alt="Maxytrip aktiviteler ve öne çıkan turlar" /></div>
+            <figcaption class="label">Öne çıkan turlar ve rezervasyon</figcaption>
+          </figure>
+        </div>
+
+        <dl class="ledger">
+          <div class="ledger__row">
+            <dt>Rezervasyon ve ödeme</dt>
+            <dd>Sanal POS ile kartla ödeme · peşin, kapora, kapıda ya da havale · yetişkin ve çocuk yaşı · tura özel yaş sınırı · otelden alış noktası · yazım hatasına dayanıklı arama · turlara video</dd>
+          </div>
+          <div class="ledger__row">
+            <dt>Operasyon</dt>
+            <dd>5, 10 ve 15 günlük doluluk panosu · iptal ve iade takibi · ödeme durumu, dil ve alış saatiyle yolcu manifestosu</dd>
+          </div>
+          <div class="ledger__row">
+            <dt>Otomasyon</dt>
+            <dd>Rezervasyon detayı WhatsApp ve e-postayla kendiliğinden gider · turdan önce alış saati hatırlatması ve oda numarası toplama</dd>
+          </div>
+          <div class="ledger__row">
+            <dt>Büyüme</dt>
+            <dd>Teknik SEO · Kiril dahil çok dilli altyapı · sepet, paket ve artan indirim · reklam alanları</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="section case" id="vaka-taply" aria-labelledby="taply-title">
+        <h2 class="section__title case__title" id="taply-title">Dijital menü ve işletme paneli</h2>
+        <p class="label case__meta"><span lang="en">Taply</span> · Kafe ve restoran teknolojisi · Yayında</p>
+        <p class="case__lead">Kafe, restoran ve oteller için NFC ve QR ile açılan bir menü sistemi kurduk: müşterinin telefonunda açılan menüden işletmenin paneline, tüm kafeleri yöneten sistem ekranına kadar.</p>
+
+        <div class="case__media">
+          <figure class="screen screen--desk">
+            <img src="/work/taply/taply-site.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Taply tanıtım sitesi: NFC kartlarla işletmeyi dijitale taşıma" />
+          </figure>
+          <figure class="screen screen--phone">
+            <img src="/work/taply/taply-menu.webp" width="600" height="1298" loading="lazy" decoding="async" alt="Taply dijital menüsünün telefondaki görünümü" />
+          </figure>
+        </div>
+        <div class="case__more">
+          <figure class="shot" style="--zoom:1.5;--x:58%;--y:62%">
+            <div class="shot__frame"><img src="/work/taply/taply-panel.webp" width="1400" height="875" loading="lazy" decoding="async" alt="Taply işletme paneli: okuma istatistikleri ve uyarılar" /></div>
+            <figcaption class="label">İşletme paneli: 14 günlük okutma grafiği</figcaption>
+          </figure>
+          <figure class="shot" style="--zoom:1.6;--x:62%;--y:42%">
+            <div class="shot__frame"><img src="/work/taply/taply-admin.webp" width="1400" height="875" loading="lazy" decoding="async" alt="Taply sistem yönetimi: kafeler, üyelikler ve tahsilat" /></div>
+            <figcaption class="label">Sistem yönetimi: kafe sağlığı ve üyelikler</figcaption>
+          </figure>
+        </div>
+
+        <dl class="ledger">
+          <div class="ledger__row">
+            <dt>Dijital menü</dt>
+            <dd>NFC kart ya da QR ile uygulamasız açılır · Türkçe ve İngilizce · kategoriler ve menüde arama · boy ve fiyat seçenekleri · alerjen uyarıları</dd>
+          </div>
+          <div class="ledger__row">
+            <dt>İşletme paneli</dt>
+            <dd>Günlük ve 14 günlük NFC / QR okuma istatistikleri · ürün, kategori ve seçenek grupları · toplu fiyat güncelleme · çeviriler ve Excel · masa bazlı QR / NFC · kampanya bandı</dd>
+          </div>
+          <div class="ledger__row">
+            <dt>Sistem yönetimi</dt>
+            <dd>Tüm kafeler tek ekranda · eksik alerjen bilgisi gibi sağlık uyarıları · üyelik, paket ve tahsilat takibi · site talepleri ve içerik yönetimi</dd>
+          </div>
+          <div class="ledger__row">
+            <dt>Tanıtım sitesi</dt>
+            <dd>NFC ürünlerini kafe, restoran, otel ve mağazalara anlatan site · nasıl çalıştığı · teklif alma ve panele giriş</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="section process" id="surec" aria-labelledby="surec-title">
+        <h2 class="section__title" id="surec-title">Süreç</h2>
+        <div class="timeline">
+          <span class="timeline__track" aria-hidden="true"><span class="timeline__draw"></span></span>
+          <ol class="timeline__steps">
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <h3 class="step__name">Keşif</h3>
+            <p class="label step__time">~1 hafta</p>
+            <p class="step__desc">Hedefleri, kitleyi ve kapsamı birlikte netleştiriyoruz.</p>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <h3 class="step__name">Tasarım</h3>
+            <p class="step__time step__time--plan">Seçimlerinize göre</p>
+            <p class="step__desc">Yapıyı, dili ve görsel dünyayı ekranlara döküyoruz.</p>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <h3 class="step__name">Geliştirme</h3>
+            <p class="step__time step__time--plan">Seçimlerinize göre</p>
+            <p class="step__desc">Tasarımı hızlı, erişilebilir ve sağlam bir koda çeviriyoruz.</p>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <h3 class="step__name">Teslim</h3>
+            <p class="label step__time">~1 hafta</p>
+            <p class="step__desc">Yayına alıyor, ekibinizi eğitiyor, anahtarı teslim ediyoruz.</p>
+          </li>
+          </ol>
+        </div>
+        <p class="process__note">Tasarım ve geliştirmenin süresini, <a href="#hizmetler">aşağıda seçtiğiniz hizmetler</a> belirler.</p>
+      </section>
+
+      <section class="section plan" id="hizmetler" aria-labelledby="plan-title">
+        <h2 class="section__title plan__title" id="plan-title">Ne kadar sürer?</h2>
+        <p class="plan__sub">Hizmetleri seçin; takvim kendini çizsin.</p>
+
+        <div class="board" data-planner>
+          <div class="board__grid">
+            <div class="board__head" aria-hidden="true">
+              <div class="board__flag" data-flag><span class="board__finish-label" data-finish-label>~ 3–4 hafta</span></div>
+              <div class="board__ruler" data-ruler></div>
+            </div>
+            <ul class="board__rows" data-rows></ul>
+            <div class="board__finish" aria-hidden="true" data-finish><span class="board__finish-line"></span></div>
+          </div>
+          <form class="idea" data-idea>
+            <label class="visually-hidden" for="idea-input">Bir fikir ekleyin</label>
+            <input class="idea__input" id="idea-input" type="text" maxlength="80" autocomplete="off" placeholder="+ Bir fikir ekleyin" />
+            <button class="idea__btn label" type="submit">Ekle</button>
+          </form>
+          <p class="idea__msg" role="status" aria-live="polite" data-idea-msg></p>
+        </div>
+
+        <div class="plan__total">
+          <p class="plan__weeks" aria-live="polite" data-total>Tahmini teslim yaklaşık 3–4 hafta.</p>
+          <p class="plan__note">Kesin takvim görüşmede netleşir.</p>
+        </div>
+      </section>
+
+      <section class="section brief" id="iletisim" aria-labelledby="iletisim-title">
+        <h2 class="brief__title" id="iletisim-title">İşinizi anlatın, planı birlikte netleştirelim.</h2>
+        <form class="brief__form" data-brief novalidate>
+          <div class="brief__summary">
+            <p class="label">Planınız</p>
+            <p class="brief__weeks" data-brief-weeks>Tahmini teslim yaklaşık 5–6 hafta</p>
+            <ul class="brief__chips" data-chips></ul>
+            <a class="brief__edit label" href="#hizmetler">Planı düzenle ↑</a>
+          </div>
+          <div class="brief__fields">
+            <div class="field">
+              <label class="label" for="b-name">Adınız</label>
+              <input class="field__input" id="b-name" name="name" type="text" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label class="label" for="b-company">Şirketiniz</label>
+              <input class="field__input" id="b-company" name="company" type="text" autocomplete="organization" />
+            </div>
+            <div class="field field--wide">
+              <label class="label" for="b-needs">İşinizi ve bizden beklentilerinizi anlatın</label>
+              <textarea class="field__input field__area" id="b-needs" name="needs" rows="4" aria-describedby="b-needs-hint b-needs-error" placeholder="Ne satıyorsunuz, müşterileriniz kim, sitenin sizin için neyi çözmesi gerekiyor?"></textarea>
+              <p class="field__hint" id="b-needs-hint">En az bir cümle yeterli.</p>
+              <p class="field__error" id="b-needs-error" data-needs-error></p>
+            </div>
+          </div>
+          <div class="brief__actions">
+            <button class="btn" type="submit">Planı e-postayla gönder</button>
+            <button class="btn-text label" type="button" data-whatsapp hidden>WhatsApp’tan gönder</button>
+            <button class="btn-text label" type="button" data-copy>Planı kopyala</button>
+          </div>
+          <p class="brief__status" role="status" aria-live="polite" data-status></p>
+          <p class="brief__how">Gönder, planınızı e-posta uygulamanızda hazır bir mesaj olarak açar. Uygulama açılmazsa planı kopyalayıp <a href="mailto:kaancanolcay@gmail.com" data-contact-email>kaancanolcay@gmail.com</a> adresine gönderebilirsiniz.</p>
+          <p class="brief__note">Bedel, tüm ihtiyaçlarınızı anlamak için yapacağımız görüşmeden sonra belirlenir.</p>
+        </form>
+      </section>
+      <section class="section faq" id="sss" aria-labelledby="sss-title">
+        <h2 class="section__title" id="sss-title">Sık sorulanlar</h2>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary>Fiyatı neden sitede yazmıyorsunuz?<svg class="faq__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" /></svg></summary>
+            <p>Çünkü her proje farklı. Bedeli, ihtiyaçlarınızı dinlediğimiz bir görüşmeden sonra kapsama göre teklifle belirliyoruz.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Hazır tema ya da şablon kullanıyor musunuz?<svg class="faq__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" /></svg></summary>
+            <p>Hayır. Her siteyi işinize, müşterilerinize ve işleyişinize göre sıfırdan tasarlıyor ve geliştiriyoruz.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Takvimdeki süreler kesin mi?<svg class="faq__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" /></svg></summary>
+            <p>Hayır, yaklaşık. Seçtiğiniz hizmetlere göre kaba bir tahmin veriyoruz; kesin takvim keşif görüşmesinden sonra netleşir.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Listede olmayan bir özellik isteyebilir miyim?<svg class="faq__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" /></svg></summary>
+            <p>Elbette. Takvimdeki “Bir fikir ekleyin” alanına yazın; görüşmede birlikte değerlendirip süresini netleştiririz.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Online ödeme için bizden ne gerekiyor?<svg class="faq__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" /></svg></summary>
+            <p>Bankanızdan aldığınız sanal POS hesabının bağlantı bilgileri yeterli. Kurulumu ve test ödemelerini biz yapıyoruz.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Site yayına girdikten sonra ne oluyor?<svg class="faq__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" /></svg></summary>
+            <p>Ekibinizi yönetim paneline alıştırıyor, siteyi birlikte yayına alıyoruz. Sonrasındaki bakım ve geliştirmeleri de konuşabiliriz.</p>
+          </details>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- send shortcut while the visitor is building a plan (the range itself rides on the sticky ruler) -->
+    <div class="plan-bar" data-plan-bar aria-hidden="true">
+      <p class="plan-bar__text"><span class="plan-bar__count" data-bar-count>Temel kurulum</span></p>
+      <a class="plan-bar__go label" href="#iletisim" tabindex="-1">Planı gönder →</a>
+    </div>
+
+    <footer class="footer">
+      <span class="label">© 2026 <span lang="en">KNC Studio</span></span>
+      <a class="footer__mail" href="mailto:kaancanolcay@gmail.com" lang="en">kaancanolcay@gmail.com</a>
+      <span class="label">İstanbul</span>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

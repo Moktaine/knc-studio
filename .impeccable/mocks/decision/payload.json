@@ -1,0 +1,78 @@
+{
+  "title": "Choose the layout after the ring",
+  "question": "Schedule and drawing set kept; the letter is replaced. Which structure should carry the case study, the service picker, the estimate and the emailed plan?",
+  "options": [
+    {
+      "id": "workbench",
+      "kind": "assigned",
+      "label": "Your site on the workbench",
+      "kicker": "THE ROLL",
+      "lineage": "a craftsman's bench with parts laid out beside the frame",
+      "thesis": "The hero frame returns as the visitor's own site in wireframe, and each service they pick drops in and turns solid.",
+      "palette": [
+        "#0f0f0d",
+        "#efe9dc",
+        "#c9ab70",
+        "#1a1713"
+      ],
+      "materials": [
+        "the hero's dashed wireframe reused",
+        "service parts laid in a tray",
+        "solid gold hairline when a part is placed"
+      ],
+      "viewport": "A large dashed site wireframe on the left (nav, booking box, payment slot, language switch); a tray of service parts on the right; the estimate sits under the frame and grows with each part.",
+      "risk": "Needs one wireframe slot per service; ideas the visitor types have no slot and go to a notes strip.",
+      "html": ".impeccable/mocks/decision/workbench.html",
+      "comp": ".impeccable/mocks/decision/workbench.png"
+    },
+    {
+      "id": "drawings",
+      "kind": "dealt",
+      "label": "The drawing set",
+      "lineage": "architect's numbered drawing sheets with a title block",
+      "thesis": "The hero's wireframe-to-built idea continues: every section is a drawing sheet, and choosing a service builds it on the plan.",
+      "palette": [
+        "#0f0f0d",
+        "#efe9dc",
+        "#c9ab70",
+        "#1a1713"
+      ],
+      "materials": [
+        "dashed modules that turn solid when chosen",
+        "dimension lines",
+        "a title block that collects the plan"
+      ],
+      "viewport": "Sheet A: the case study with screens and dimension lines. Sheet B: services drawn as dashed rooms of a site plan; ticking one draws it solid, and the corner title block totals the weeks.",
+      "risk": "Can tip into an architecture costume if the drawing devices outnumber the content.",
+      "html": ".impeccable/mocks/decision/drawings.html",
+      "comp": ".impeccable/mocks/decision/drawings.png"
+    },
+    {
+      "id": "schedule",
+      "kind": "dealt",
+      "label": "The schedule",
+      "lineage": "a production schedule ruled in weeks",
+      "thesis": "The service picker is the delivery timeline itself: each ticked service draws its bar, and the finish line moves.",
+      "palette": [
+        "#0f0f0d",
+        "#efe9dc",
+        "#c9ab70",
+        "#1a1713"
+      ],
+      "materials": [
+        "a week ruler across the page",
+        "gold bars that draw on selection",
+        "one moving finish marker"
+      ],
+      "viewport": "Case study as a wide pinned screen strip; then a full-width week ruler with one row per service, checkbox at left, and the finish marker reading the total weeks.",
+      "risk": "Rows of bars can read like project-management software if the type is not kept large.",
+      "html": ".impeccable/mocks/decision/schedule.html",
+      "comp": ".impeccable/mocks/decision/schedule.png"
+    }
+  ],
+  "reroll": true,
+  "buildPath": {
+    "value": "code"
+  },
+  "steer": true
+}
