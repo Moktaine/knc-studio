@@ -11,7 +11,8 @@ export function mountHeroArt(root = document) {
     svg('art-decor', heroLayers.decor) +
     svg('art-horizon', heroLayers.horizon) +
     svg('art-wire', heroLayers.wire) +
-    svg('art-gold', heroLayers.gold);
+    // the gold layer rises inside a sliding window (see wipe below), so it is revealed without repaints
+    `<div class="art-gold-wipe">${svg('art-gold wipe__in', heroLayers.gold)}</div>`;
 }
 
 /**
@@ -19,6 +20,17 @@ export function mountHeroArt(root = document) {
  * 0–4 hold · 4–28 headline fill · 12–34 wireframe → finished · 38–58 frame closes in on card 01.
  * `crop` comes from wall.js: where the frame must end up to match card 01 exactly.
  */
+// Reveals are "sliding windows": an overflow-hidden wrapper slides one way while its content
+// slides back the same distance, so the content appears to stand still while being uncovered.
+// Both are transforms, so the GPU composites them; a clip-path wipe would repaint every frame,
+// which is what made the hero drop frames on phones (3x pixel density).
+// x/y: 0 clears the pixel offset GSAP reads from the CSS starting transform (otherwise it would
+// be added on top of the percentage and the layer would never come back into view).
+const wipe = (tl, wrap, axis, from, to, vars, at) =>
+  tl
+    .fromTo(wrap, { x: 0, y: 0, [axis]: from }, { [axis]: to, ...vars }, at)
+    .fromTo(wrap.map((el) => el.firstElementChild), { x: 0, y: 0, [axis]: -from }, { [axis]: -to, ...vars }, at);
+
 export function addHeroToTimeline(tl, q, crop) {
   const inset0 = 'inset(0% 0% 0% 0%)';
   // the frame's border lines shrink to the card's width/height as they travel inward
@@ -29,13 +41,18 @@ export function addHeroToTimeline(tl, q, crop) {
 
   tl.to(q('.hint'), { opacity: 0, duration: 5, ease: 'power1.out' }, 1)
 
-    // headline: gold serif fills left → right, the outline sans only dims
-    .to(q('.headline__fill'), { clipPath: 'inset(-0.3em 0% -0.3em -0.3em)', duration: 24, ease: 'none' }, 4)
-    .to(q('.headline__a'), { opacity: 0.35, duration: 24, ease: 'none' }, 4)
+    // headline: the outline sans only dims
+    .to(q('.headline__a'), { opacity: 0.35, duration: 24, ease: 'none' }, 4);
 
-    // dashed → solid: the solid line sweeps in while the dashed one is wiped out ahead of it
-    .fromTo(q('.frame__line--dash'), { clipPath: inset0 }, { clipPath: 'inset(0% 0% 0% 100%)', duration: 16, ease: 'power1.inOut' }, 12)
-    .to(q('.frame__line--solid'), { clipPath: inset0, duration: 16, ease: 'power1.inOut' }, 12)
+  // headline: gold serif fills left → right
+  wipe(tl, q('.headline__fill'), 'xPercent', -100, 0, { duration: 24, ease: 'none' }, 4);
+  // dashed → solid: the solid line sweeps in while the dashed one is wiped out ahead of it
+  wipe(tl, q('.frame__wipe--dash'), 'xPercent', 0, 100, { duration: 16, ease: 'power1.inOut' }, 12);
+  wipe(tl, q('.frame__wipe--solid'), 'xPercent', -100, 0, { duration: 16, ease: 'power1.inOut' }, 12);
+  // the gold arch composition rises out of the wireframe arch
+  wipe(tl, q('.art-gold-wipe'), 'yPercent', 100, 0, { duration: 15, ease: 'power2.inOut' }, 18);
+
+  tl
     .fromTo(q('.rule--dash'), { clipPath: inset0 }, { clipPath: 'inset(0% 0% 0% 100%)', duration: 14, ease: 'power1.inOut' }, 12)
     .to(q('.rule--solid'), { clipPath: inset0, duration: 14, ease: 'power1.inOut' }, 12)
     .to(q('.frame__cross'), { opacity: 0, duration: 10, ease: 'power1.inOut' }, 12)
@@ -47,7 +64,6 @@ export function addHeroToTimeline(tl, q, crop) {
     // hero area: warm tone, then the gold arch composition rises out of the wireframe arch
     .to(q('.frame__fill'), { opacity: 1, duration: 14, ease: 'power1.inOut' }, 16)
     .to(q('.art-wire'), { opacity: 0, duration: 10, ease: 'power1.inOut' }, 19)
-    .to(q('.art-gold'), { clipPath: inset0, duration: 15, ease: 'power2.inOut' }, 18)
     .to([q('.art-decor'), q('.art-horizon')], { opacity: 1, duration: 12, ease: 'power1.inOut' }, 22)
 
     // 34–38 rest. 38–44: the words and the side ornaments leave, so nothing is sliced later.

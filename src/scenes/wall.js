@@ -176,9 +176,9 @@ export function addWallToTimeline(tl, stage, cards, g) {
   renderDoor();
 
   // T is the hand-off, right after the hero frame has closed onto card 01 (hero.js, 44–58).
+  const T = 58;
   // T swap · +0–14 pull back · +14–58 full turn back to the arch · +60–74 push back in ·
   // +74–90 through the door · +90–94 hold on the intro
-  const T = 58;
   tl.set(wall, { autoAlpha: 1 }, T)
     .set(hero, { autoAlpha: 0 }, T + 0.4)
     .to(cam, { d: g.dEnd, reveal: 1, duration: 14, ease: 'power2.inOut', onUpdate: render }, T)

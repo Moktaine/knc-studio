@@ -1,8 +1,15 @@
-import '@fontsource/inter/300.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/cormorant-garamond/300.css';
-import '@fontsource/cormorant-garamond/400.css';
-import '@fontsource/cormorant-garamond/400-italic.css';
+// Latin + Latin Extended only (Turkish needs ş ğ ı İ from latin-ext); the other script subsets
+// would only add @font-face rules to the CSS.
+import '@fontsource/inter/latin-300.css';
+import '@fontsource/inter/latin-ext-300.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-ext-400.css';
+import '@fontsource/cormorant-garamond/latin-300.css';
+import '@fontsource/cormorant-garamond/latin-ext-300.css';
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-ext-400.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/cormorant-garamond/latin-ext-400-italic.css';
 import '@fontsource/cinzel/latin-600.css';
 import 'lenis/dist/lenis.css';
 import './style.css';
@@ -16,6 +23,7 @@ import { mountWall, measure, addWallToTimeline, mountGallery } from './scenes/wa
 import { initTimeline, initReveals } from './scenes/closing.js';
 import { initPlanner } from './scenes/planner.js';
 import { initDock } from './scenes/dock.js';
+import { loadNear, loadNow } from './lazy.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,6 +43,12 @@ if (reduced.matches) {
   runMotion();
 }
 
+// Case-study (and reduced-motion gallery) images load as the visitor approaches them.
+loadNear([
+  ...document.querySelectorAll('.case img[data-src]'),
+  ...document.querySelectorAll('[data-gallery]:not([hidden])'),
+]);
+
 // Palette switcher for trying colour directions (bottom-left "Tema" button). Shipped on purpose
 // while the palette is being chosen; remove this line to take it out of the live site.
 import('./dev/themes.js').then((m) => m.initThemes());
@@ -52,6 +66,13 @@ function runMotion() {
   gsap.ticker.lagSmoothing(0);
 
   const cards = mountWall(stage);
+
+  // The ring's screenshots wait until the visitor starts scrolling (or the page has been idle a
+  // moment), so the first load is just the hero; the hero alone takes ~3 screens to scroll past.
+  const ringImgs = stage.querySelectorAll('.ring img[data-src]');
+  const loadRing = () => loadNow(ringImgs);
+  addEventListener('scroll', loadRing, { once: true, passive: true });
+  addEventListener('load', () => setTimeout(loadRing, 2500), { once: true });
   const q = gsap.utils.selector(stage);
   let ctx;
   let pin;
@@ -134,10 +155,16 @@ function runMotion() {
     } catch {}
   });
 
-  // Headline metrics feed the frame size, so re-measure once the real fonts are in.
+  // Headline metrics feed the frame size, so re-measure once the real fonts are in, but only if
+  // they actually changed it: a second build is the biggest main-thread task on a slow phone.
+  const frame = stage.querySelector('.frame');
+  const frameSize = () => `${frame.offsetWidth}x${frame.offsetHeight}`;
+  const builtAt = frameSize();
   document.fonts?.ready.then(() => {
-    build();
-    ScrollTrigger.refresh();
+    if (frameSize() !== builtAt) {
+      build();
+      ScrollTrigger.refresh();
+    }
     if (resumeAt > pin.end) lenis.scrollTo(resumeAt, { immediate: true });
   });
 }

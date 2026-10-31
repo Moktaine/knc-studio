@@ -56,9 +56,13 @@ export const projects = [
   shot('Taply', 'taply-admin', 'Sistem yönetimi', 'desktop'),
 ];
 
+// 1×1 transparent stand-in until lazy.js swaps in the real file (no alt text or broken box meanwhile)
+export const PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
 export function renderCardInner(p) {
   if (p.media?.type === 'image') {
-    return `<img src="${p.media.src}" alt="${p.media.alt}" decoding="async" draggable="false" />`;
+    // data-src: wall.js / lazy.js load these once the visitor starts scrolling toward the ring
+    return `<img src="${PLACEHOLDER}" data-src="${p.media.src}" alt="${p.media.alt}" decoding="async" draggable="false" />`;
   }
   return `<svg viewBox="0 0 150 210" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <rect width="150" height="210" style="fill:${heroLayers.bg}"/>${heroLayers.horizon}${heroLayers.gold}</svg>`;

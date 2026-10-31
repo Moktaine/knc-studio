@@ -165,9 +165,14 @@ html { scrollbar-width: thin; scrollbar-color: var(--gold-45) var(--ink); }
   opacity: 0.2;
 }
 .headline__fill {
+  /* sliding-window reveal (hero.js): the padding keeps italic overhang and descenders inside */
+  display: block;
+  margin: -0.3em;
+  overflow: hidden;
   color: var(--gold);
-  clip-path: inset(-0.3em 100% -0.3em -0.3em);
+  transform: translateX(-100%);
 }
+.headline__fill > .wipe__in { display: block; padding: 0.3em; transform: translateX(100%); }
 
 /* hero frame ------------------------------------------ */
 .frame {
@@ -201,10 +206,10 @@ html { scrollbar-width: thin; scrollbar-color: var(--gold-45) var(--ink); }
   pointer-events: none;
 }
 .frame__line--dash { border: 1px dashed var(--cream-30); }
-.frame__line--solid {
-  border: 1px solid var(--gold-45);
-  clip-path: inset(0 100% 0 0);
-}
+.frame__line--solid { border: 1px solid var(--gold-45); }
+.frame__wipe { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.frame__wipe--solid { transform: translateX(-100%); }
+.frame__wipe--solid > .wipe__in { transform: translateX(100%); }
 
 /* Art box = exactly one card (150×210 design units), centred in the frame.
    Container units keep it in lockstep with wall.js: 150·s = min(frame w, frame h·150/210). */
@@ -235,7 +240,24 @@ html { scrollbar-width: thin; scrollbar-color: var(--gold-45) var(--ink); }
 .frame__edge--r { top: 0; bottom: 0; width: 1px; }
 .frame__edge--l { left: 0; }
 .frame__edge--r { right: 0; }
-.art-gold { clip-path: inset(100% 0 0 0); }
+.art-gold-wipe { position: absolute; inset: 0; overflow: hidden; transform: translateY(100%); }
+.art-gold-wipe > .art-gold { transform: translateY(-100%); }
+/* hero layers that move or fade every frame get their own GPU layer, so phones composite them
+   instead of repainting the frame at 3x density */
+.headline__a,
+.headline__fill,
+.headline__fill > .wipe__in,
+.frame__wipe,
+.frame__wipe > .wipe__in,
+.art-gold-wipe,
+.art-gold-wipe > .art-gold,
+.frame__fill,
+.frame__cross,
+.art-wire,
+.art-decor,
+.art-horizon,
+.nav__wire,
+.nav__real { will-change: transform, opacity; }
 
 .hint {
   flex: none;
@@ -1013,7 +1035,7 @@ a.counter__title:hover { color: var(--gold); }
 .reduced .wall { display: none; }
 .reduced .nav__wire,
 .reduced .rule--dash,
-.reduced .frame__line--dash,
+.reduced .frame__wipe--dash,
 .reduced .frame__cross,
 .reduced .art-wire,
 .reduced .hint { display: none; }
@@ -1022,9 +1044,12 @@ a.counter__title:hover { color: var(--gold); }
 .reduced .art-decor,
 .reduced .art-horizon { opacity: 1; }
 .reduced .rule--solid,
-.reduced .frame__line--solid,
-.reduced .art-gold,
-.reduced .headline__fill { clip-path: none; }
+.reduced .headline__fill,
+.reduced .headline__fill > .wipe__in,
+.reduced .frame__wipe--solid,
+.reduced .frame__wipe--solid > .wipe__in,
+.reduced .art-gold-wipe,
+.reduced .art-gold-wipe > .art-gold { transform: none; }
 .reduced .headline__a { opacity: 0.35; }
 .reduced .hero { padding-bottom: var(--gut); }
 .reduced .timeline__draw { transform: none; }
